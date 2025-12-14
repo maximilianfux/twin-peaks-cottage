@@ -540,6 +540,13 @@
         <h2>Inquiry</h2>
 
         <form id="inquiryForm" class="form">
+         
+          <!-- Honeypot (anti-spam) -->
+<label class="hp-field">
+  Leave this empty
+  <input type="text" name="company" tabindex="-1" autocomplete="off">
+</label>
+
           <div class="row">
             <div class="field">
               <label for="name">Name</label>
