@@ -3,11 +3,12 @@ console.log("app.js loaded");
 // ====== CONFIG (Supabase REST) ======
 // Fill these in after you create your Supabase project.
 // (Anon key is allowed to be public. Don’t use the service_role key here.)
-const SUPABASE_URL = "";       // e.g. https://xxxx.supabase.co
-const SUPABASE_ANON_KEY = "";  // from Supabase Project Settings -> API
+const SUPABASE_URL = "https://mmppdhjakbfndlkdtikr.supabase.co";       // e.g. https://xxxx.supabase.co
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1tcHBkaGpha2JmbmRsa2R0aWtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU2NjczNDAsImV4cCI6MjA4MTI0MzM0MH0.paWKTF0WOdcmRYxeI2-7D5LtJ08lbNHYuBvhFCzu3lI";  // from Supabase Project Settings -> API
 const SUPABASE_TABLE = "inquiries";
 
 // Footer year
+
 document.getElementById("year").textContent = new Date().getFullYear();
 // ===== Quick Info animation (stagger + on-scroll reveal) =====
 const quickItems = document.querySelectorAll(".quick-info .qi");
