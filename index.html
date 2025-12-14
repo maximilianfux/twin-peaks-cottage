@@ -9,29 +9,232 @@
 </head>
 
 <body>
+  <!-- SVG ICON SPRITE (paste once) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <!-- Cabin / brand -->
+    <symbol id="i-cabin" viewBox="0 0 24 24">
+      <path d="M3 11.5 12 4l9 7.5V21a1 1 0 0 1-1 1h-6v-6H10v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9 12h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Bathroom -->
+    <symbol id="i-bathtub" viewBox="0 0 24 24">
+      <path d="M5 10V7a2 2 0 0 1 2-2h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M4 12h16v2a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M7 21l1-2m9 2-1-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-hairdryer" viewBox="0 0 24 24">
+      <path d="M4 12a4 4 0 0 1 4-4h7a3 3 0 0 1 0 6H9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9 14H7a3 3 0 0 0 0 6h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M16 10h4m-4 3h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-bottle" viewBox="0 0 24 24">
+      <path d="M10 3h4v3l1 1v3a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V7l1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9 12h6v8a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="i-water" viewBox="0 0 24 24">
+      <path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Bedroom & laundry -->
+    <symbol id="i-washer" viewBox="0 0 24 24">
+      <path d="M5 4h14a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8 7h2m4 0h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M12 18a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+
+    <symbol id="i-hanger" viewBox="0 0 24 24">
+      <path d="M12 5a2.5 2.5 0 0 1 2.5 2.5c0 1.2-.8 2.1-2 2.5l-.5.2v1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M6 12l6-2 6 2-6 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="i-iron" viewBox="0 0 24 24">
+      <path d="M6 14V9a4 4 0 0 1 4-4h8v9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M6 14h14v3a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- Entertainment -->
+    <symbol id="i-tv" viewBox="0 0 24 24">
+      <path d="M5 7h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8 21h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-game" viewBox="0 0 24 24">
+      <path d="M7 15l-1 3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l-1-3a4 4 0 0 0-4-3H11a4 4 0 0 0-4 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9 15h2m-1-1v2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M15 15h0m2 0h0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Heating & cooling -->
+    <symbol id="i-snowflake" viewBox="0 0 24 24">
+      <path d="M12 2v20M4 6l16 12M20 6 4 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-fireplace" viewBox="0 0 24 24">
+      <path d="M7 22V7h10v15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M10 17c0-2 2-3 2-5 2 1 2 3 2 4a2.5 2.5 0 0 1-5 1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M6 7h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-fan" viewBox="0 0 24 24">
+      <path d="M12 12m-2.2 0a2.2 2.2 0 1 0 4.4 0 2.2 2.2 0 1 0-4.4 0" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 2c2 1 3 3 2 5-1 1-3 1-4 0-1-2 0-4 2-5zM22 12c-1 2-3 3-5 2-1-1-1-3 0-4 2-1 4 0 5 2zM12 22c-2-1-3-3-2-5 1-1 3-1 4 0 1 2 0 4-2 5zM2 12c1-2 3-3 5-2 1 1 1 3 0 4-2 1-4 0-5-2z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+    </symbol>
+
+    <symbol id="i-heat" viewBox="0 0 24 24">
+      <path d="M8 4c1 2 1 3 0 5s-1 3 0 5 1 3 0 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M12 4c1 2 1 3 0 5s-1 3 0 5 1 3 0 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M16 4c1 2 1 3 0 5s-1 3 0 5 1 3 0 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Safety -->
+    <symbol id="i-alarm" viewBox="0 0 24 24">
+      <path d="M12 21a7 7 0 1 0 0-14 7 7 0 0 0 0 14z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 11v4m0-6h0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M5 5 3 3m16 2 2-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-extinguisher" viewBox="0 0 24 24">
+      <path d="M10 6h6v4h-6z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 10v12m-3 0h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M16 7h2l1 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-firstaid" viewBox="0 0 24 24">
+      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M5 7h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 11v6m-3-3h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Internet -->
+    <symbol id="i-wifi" viewBox="0 0 24 24">
+      <path d="M2.5 9.5a14 14 0 0 1 19 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M5.5 12.5a10 10 0 0 1 13 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M8.5 15.5a6 6 0 0 1 7 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M12 19h0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+
+    <!-- Kitchen -->
+    <symbol id="i-fridge" viewBox="0 0 24 24">
+      <path d="M7 2h10a2 2 0 0 1 2 2v18H5V4a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8 6h0m0 10h0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-microwave" viewBox="0 0 24 24">
+      <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M7 9h8v6H7z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M18 9h0m0 3h0m0 3h0" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-utensils" viewBox="0 0 24 24">
+      <path d="M6 2v8m0 0c0 2-1 3-3 3V2m3 8c0 2 1 3 3 3V2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M14 2v10m0 0c0 2 1 3 3 3V2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M9 22V13m6 9V13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-dishwasher" viewBox="0 0 24 24">
+      <path d="M6 3h12a1 1 0 0 1 1 1v17H5V4a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8 6h2m4 0h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M8 12c2 2 6 2 8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-oven" viewBox="0 0 24 24">
+      <path d="M6 3h12v18H6z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M6 8h12" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M9 6h0m3 0h0m3 0h0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M9 12h6v6H9z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+
+    <symbol id="i-coffee" viewBox="0 0 24 24">
+      <path d="M6 8h10v7a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M16 10h2a2 2 0 0 1 0 4h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M7 22h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-toaster" viewBox="0 0 24 24">
+      <path d="M6 10a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v8H6z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M9 3v3m6-3v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M8 22h8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-blender" viewBox="0 0 24 24">
+      <path d="M9 2h6l-1 5H10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M8 7h8v9a4 4 0 0 1-4 4h0a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M10 22h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-table" viewBox="0 0 24 24">
+      <path d="M4 10h16M6 10v10m12-10v10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M5 7h14a1 1 0 0 1 1 1v2H4V8a1 1 0 0 1 1-1z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+
+    <!-- Location / Outdoor / Services -->
+    <symbol id="i-door" viewBox="0 0 24 24">
+      <path d="M7 3h10v18H7z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M14 12h0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-patio" viewBox="0 0 24 24">
+      <path d="M4 20h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M6 20V9h12v11" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M9 12h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-firepit" viewBox="0 0 24 24">
+      <path d="M12 3c2 2 2 4 0 6 2-1 4 0 4 3a4 4 0 0 1-8 0c0-2 1-4 4-5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M6 21h12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-bbq" viewBox="0 0 24 24">
+      <path d="M7 11h10a5 5 0 0 1-10 0z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M10 16l-2 6m6-6 2 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M9 6c0 2 2 2 2 4m2-4c0 2 2 2 2 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-parking" viewBox="0 0 24 24">
+      <path d="M6 3h8a5 5 0 0 1 0 10H6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M6 13v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+
+    <symbol id="i-keypad" viewBox="0 0 24 24">
+      <path d="M7 3h10v18H7z" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M9 7h0m3 0h0m3 0h0M9 11h0m3 11h0m3 11h0M9 15h0m3 15h0m3 15h0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
   <header class="nav">
     <div class="container nav-inner">
-      <div class="brand">Twin Peaks Cottage</div>
-      <nav class="links">
+      <div class="brand">
+        <svg class="brand-icon" aria-hidden="true"><use href="#i-cabin"></use></svg>
+        <span>Twin Peaks Cottage</span>
+      </div>
+
+      <nav class="links" aria-label="Primary">
         <a href="#highlights">Highlights</a>
         <a href="#gallery">Photos</a>
         <a href="#amenities">Amenities</a>
         <a href="#inquiry">Inquiry</a>
       </nav>
-      <a class="btn btn-primary" href="https://www.airbnb.com/rooms/53188308?viralityEntryPoint=1&s=76" target="_blank" rel="noopener">Book on Airbnb</a>
+
+      <a class="btn btn-primary" href="https://www.airbnb.com/rooms/53188308?viralityEntryPoint=1&s=76" target="_blank" rel="noopener">
+        Book on Airbnb
+      </a>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
-      <img class="hero-img" src="images/hero.jpg" alt="Twin Peaks cottage" />
+      <img class="hero-img" src="images/hero.jpg" alt="Twin Peaks cottage exterior" loading="eager" />
       <div class="hero-overlay"></div>
 
       <div class="container hero-content">
         <h1>Tree-lined Twin Peaks cottage near Lake Arrowhead</h1>
-        <p>
-          Two furnished decks, a fire pit, and a cozy interior with smart TVs. Close to hiking and Lake Gregory.
-        </p>
+        <p>Two furnished decks, a fire pit, and a cozy interior with smart TVs. Close to hiking and Lake Arrowhead.</p>
 
         <div class="pill-row">
           <span class="pill">Twin Peaks, CA</span>
@@ -46,6 +249,19 @@
       </div>
     </section>
 
+    <!-- QUICK INFO -->
+    <section class="quick-info">
+      <div class="container quick-info-grid">
+        <div class="qi"><svg class="i" aria-hidden="true"><use href="#i-cabin"></use></svg><strong>2 Bedrooms</strong></div>
+        <div class="qi"><svg class="i" aria-hidden="true"><use href="#i-bathtub"></use></svg><strong>1 Bath</strong></div>
+        <div class="qi"><svg class="i" aria-hidden="true"><use href="#i-door"></use></svg><strong>Sleeps 5</strong></div>
+        <div class="qi"><svg class="i" aria-hidden="true"><use href="#i-firepit"></use></svg><strong>Fire Pit</strong></div>
+        <div class="qi"><svg class="i" aria-hidden="true"><use href="#i-parking"></use></svg><strong>Free Parking</strong></div>
+        <div class="qi"><svg class="i" aria-hidden="true"><use href="#i-wifi"></use></svg><strong>Wi-Fi</strong></div>
+      </div>
+    </section>
+
+    <!-- HIGHLIGHTS -->
     <section id="highlights" class="section">
       <div class="container">
         <h2>Highlights</h2>
@@ -61,7 +277,7 @@
           </div>
           <div class="card">
             <h3>Nearby</h3>
-            <p>About 5 miles to Lake Gregory</p>
+            <p>About 5 miles to Lake Arrowhead</p>
           </div>
           <div class="card">
             <h3>Easy access</h3>
@@ -88,21 +304,108 @@
       </div>
     </section>
 
+    <!-- WHY LOVE IT -->
+    <section class="section">
+      <div class="container">
+        <h2>Why you’ll love it here</h2>
+        <ul class="list">
+          <li>Quiet forest setting with mountain air and tall pines</li>
+          <li>Fire pit nights under the stars (bring s’mores energy)</li>
+          <li>Close to hiking trails and Lake Arrowhead</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
     <section id="gallery" class="section alt">
       <div class="container">
         <h2>Photo gallery</h2>
-        <p class="muted">Drop photos into <code>/images</code> as hero.jpg, 1.jpg, 2.jpg…</p>
+        <p class="muted">Click any photo to view it larger.</p>
 
         <div class="gallery" id="galleryGrid">
-          <button class="thumb" type="button" data-full="images/1.jpg"><img src="images/1.jpg" alt="Photo 1"></button>
-          <button class="thumb" type="button" data-full="images/2.jpg"><img src="images/2.jpg" alt="Photo 2"></button>
-          <button class="thumb" type="button" data-full="images/3.jpg"><img src="images/3.jpg" alt="Photo 3"></button>
-          <button class="thumb" type="button" data-full="images/4.jpg"><img src="images/4.jpg" alt="Photo 4"></button>
-          <button class="thumb" type="button" data-full="images/5.jpg"><img src="images/5.jpg" alt="Photo 5"></button>
+          <!-- Arrival & Exterior -->
+          <h3 class="gallery-group">Arrival &amp; Exterior</h3>
+          <button class="thumb" type="button" data-full="images/hero.jpg"><img src="images/hero.jpg" alt="Cottage exterior" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/driveway1.jpg"><img src="images/driveway1.jpg" alt="Driveway" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/drivewayandfrontofhouse.jpg"><img src="images/drivewayandfrontofhouse.jpg" alt="Driveway and front of house" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/frontofhouse2.jpg"><img src="images/frontofhouse2.jpg" alt="Front of house angle" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/frontofhouse5.jpg"><img src="images/frontofhouse5.jpg" alt="Front of house detail" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/eveningfrontofhouse.jpg"><img src="images/eveningfrontofhouse.jpg" alt="Front of house in the evening" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/panaromicshotofhouse.jpg"><img src="images/panaromicshotofhouse.jpg" alt="Panoramic house view" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backofhouse2.jpg"><img src="images/backofhouse2.jpg" alt="Back of house" loading="lazy"></button>
+
+          <!-- Patios & Outdoor Hangout -->
+          <h3 class="gallery-group">Patios &amp; Outdoor Hangout</h3>
+          <button class="thumb" type="button" data-full="images/frontpatio1.jpg"><img src="images/frontpatio1.jpg" alt="Front patio" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/frontpatio2.jpg"><img src="images/frontpatio2.jpg" alt="Front patio seating" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backpatio1.jpg"><img src="images/backpatio1.jpg" alt="Back patio" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backpatio2.jpg"><img src="images/backpatio2.jpg" alt="Back patio angle" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backpatio3.jpg"><img src="images/backpatio3.jpg" alt="Back patio seating area" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backpatioseating.jpg"><img src="images/backpatioseating.jpg" alt="Patio seating" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backpatiobbq.jpg"><img src="images/backpatiobbq.jpg" alt="BBQ grill" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/waterstreamandbackpatio.jpg"><img src="images/waterstreamandbackpatio.jpg" alt="Stream near patio" loading="lazy"></button>
+
+          <!-- Backyard & Fire Pit -->
+          <h3 class="gallery-group">Backyard &amp; Fire Pit</h3>
+          <button class="thumb" type="button" data-full="images/backyard1.jpg"><img src="images/backyard1.jpg" alt="Backyard" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backyard2.jpg"><img src="images/backyard2.jpg" alt="Backyard view" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backyard3.jpg"><img src="images/backyard3.jpg" alt="Backyard trees" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backyard4.jpg"><img src="images/backyard4.jpg" alt="Backyard angle" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/backyard5.jpg"><img src="images/backyard5.jpg" alt="Backyard nature" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/firepitbackyard.jpg"><img src="images/firepitbackyard.jpg" alt="Fire pit" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/eveningbackyard1.jpg"><img src="images/eveningbackyard1.jpg" alt="Backyard in the evening" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/eveningbackyard2.jpg"><img src="images/eveningbackyard2.jpg" alt="Backyard at dusk" loading="lazy"></button>
+
+          <!-- Living Room -->
+          <h3 class="gallery-group">Living Room</h3>
+          <button class="thumb" type="button" data-full="images/livingroom1.jpg"><img src="images/livingroom1.jpg" alt="Living room" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/livingroom2.jpg"><img src="images/livingroom2.jpg" alt="Living room seating" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/livingroom3.jpg"><img src="images/livingroom3.jpg" alt="Living room wide view" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/livingroomcouch.jpg"><img src="images/livingroomcouch.jpg" alt="Living room couch" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/livingroomtv.jpg"><img src="images/livingroomtv.jpg" alt="Living room TV" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/livingroomandkitchen1.jpg"><img src="images/livingroomandkitchen1.jpg" alt="Living room and kitchen" loading="lazy"></button>
+
+          <!-- Kitchen -->
+          <h3 class="gallery-group">Kitchen</h3>
+          <button class="thumb" type="button" data-full="images/kitchen1.jpg"><img src="images/kitchen1.jpg" alt="Kitchen" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/kitchen2.jpg"><img src="images/kitchen2.jpg" alt="Kitchen angle" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/kitchen3.jpg"><img src="images/kitchen3.jpg" alt="Kitchen details" loading="lazy"></button>
+
+          <!-- Bedrooms -->
+          <h3 class="gallery-group">Bedrooms</h3>
+          <button class="thumb" type="button" data-full="images/masterbedroom1.jpg"><img src="images/masterbedroom1.jpg" alt="Master bedroom" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/masterbedroom3.jpg"><img src="images/masterbedroom3.jpg" alt="Master bedroom view" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/masterbedroom4.jpg"><img src="images/masterbedroom4.jpg" alt="Master bedroom detail" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/2ndbedroom1.jpg"><img src="images/2ndbedroom1.jpg" alt="Second bedroom" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/2ndbedrrom2.jpg"><img src="images/2ndbedrrom2.jpg" alt="Second bedroom angle" loading="lazy"></button>
+
+          <!-- Office -->
+          <h3 class="gallery-group">Office</h3>
+          <button class="thumb" type="button" data-full="images/office1.jpg"><img src="images/office1.jpg" alt="Office space" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/office2.jpg"><img src="images/office2.jpg" alt="Office desk" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/office3.jpg"><img src="images/office3.jpg" alt="Office seating" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/entranceindoorshot.jpg"><img src="images/entranceindoorshot.jpg" alt="Indoor entrance" loading="lazy"></button>
+
+          <!-- Bathroom -->
+          <h3 class="gallery-group">Bathroom</h3>
+          <button class="thumb" type="button" data-full="images/bathroom1.jpg"><img src="images/bathroom1.jpg" alt="Bathroom" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/bathroom2.jpg"><img src="images/bathroom2.jpg" alt="Bathroom sink" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/bathtub.jpg"><img src="images/bathtub.jpg" alt="Bathtub" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/bathtime.jpg"><img src="images/bathtime.jpg" alt="Bathtub soak" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/bathtime2.jpg"><img src="images/bathtime2.jpg" alt="Bath at night" loading="lazy"></button>
+
+          <!-- Nature & Nearby -->
+          <h3 class="gallery-group">Nature &amp; Nearby</h3>
+          <button class="thumb" type="button" data-full="images/treesbyhouse.jpg"><img src="images/treesbyhouse.jpg" alt="Trees around the house" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/waterstream.jpg"><img src="images/waterstream.jpg" alt="Nearby stream" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/waterstream2.jpg"><img src="images/waterstream2.jpg" alt="Stream close-up" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/waterstream3.jpg"><img src="images/waterstream3.jpg" alt="Water flowing" loading="lazy"></button>
+          <button class="thumb" type="button" data-full="images/pictureofnearbylake.jpg"><img src="images/pictureofnearbylake.jpg" alt="Nearby lake" loading="lazy"></button>
         </div>
       </div>
     </section>
 
+    <!-- AMENITIES -->
     <section id="amenities" class="section">
       <div class="container">
         <h2>What this place offers</h2>
@@ -110,90 +413,165 @@
         <div class="grid three">
           <div class="card">
             <h3>Bathroom</h3>
-            <ul class="list">
-              <li>Bathtub</li><li>Hair dryer</li><li>Shampoo</li><li>Hot water</li>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-bathtub"></use></svg><span>Bathtub</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-hairdryer"></use></svg><span>Hair dryer</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-bottle"></use></svg><span>Shampoo</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-water"></use></svg><span>Hot water</span></li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>Bedroom & laundry</h3>
-            <ul class="list">
-              <li>Washer</li><li>Dryer</li><li>Essentials (towels, sheets, soap, toilet paper)</li>
-              <li>Hangers</li><li>Bed linens</li><li>Iron</li>
+            <h3>Bedroom &amp; laundry</h3>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-washer"></use></svg><span>Washer</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-washer"></use></svg><span>Dryer</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-bottle"></use></svg><span>Essentials (towels, sheets, soap, toilet paper)</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-hanger"></use></svg><span>Hangers</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-table"></use></svg><span>Bed linens</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-iron"></use></svg><span>Iron</span></li>
             </ul>
           </div>
 
           <div class="card">
-            <h3>Entertainment & family</h3>
-            <ul class="list"><li>TV</li><li>Board games</li></ul>
+            <h3>Entertainment &amp; family</h3>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-tv"></use></svg><span>TV</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-game"></use></svg><span>Board games</span></li>
+            </ul>
           </div>
 
           <div class="card">
-            <h3>Heating & cooling</h3>
-            <ul class="list"><li>Window A/C unit</li><li>Indoor fireplace</li><li>Ceiling fan</li><li>Central heating</li></ul>
+            <h3>Heating &amp; cooling</h3>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-snowflake"></use></svg><span>Window A/C unit</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-fireplace"></use></svg><span>Indoor fireplace</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-fan"></use></svg><span>Ceiling fan</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-heat"></use></svg><span>Central heating</span></li>
+            </ul>
           </div>
 
           <div class="card">
             <h3>Home safety</h3>
-            <ul class="list"><li>Smoke alarm</li><li>Carbon monoxide alarm</li><li>Fire extinguisher</li><li>First aid kit</li></ul>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-alarm"></use></svg><span>Smoke alarm</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-alarm"></use></svg><span>Carbon monoxide alarm</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-extinguisher"></use></svg><span>Fire extinguisher</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-firstaid"></use></svg><span>First aid kit</span></li>
+            </ul>
           </div>
 
           <div class="card">
-            <h3>Internet & office</h3>
-            <ul class="list"><li>Wi-Fi</li></ul>
+            <h3>Internet &amp; office</h3>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-wifi"></use></svg><span>Wi-Fi</span></li>
+            </ul>
           </div>
 
           <div class="card">
-            <h3>Kitchen & dining</h3>
-            <ul class="list">
-              <li>Kitchen (guests can cook)</li><li>Refrigerator</li><li>Microwave</li>
-              <li>Cooking basics (pots, pans, oil, salt & pepper)</li><li>Dishes & silverware</li>
-              <li>Dishwasher</li><li>Oven</li><li>Coffee maker</li><li>Toaster</li><li>Blender</li><li>Dining table</li>
+            <h3>Kitchen &amp; dining</h3>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-utensils"></use></svg><span>Kitchen (guests can cook)</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-fridge"></use></svg><span>Refrigerator</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-microwave"></use></svg><span>Microwave</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-utensils"></use></svg><span>Cooking basics (pots, pans, oil, salt &amp; pepper)</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-utensils"></use></svg><span>Dishes &amp; silverware</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-dishwasher"></use></svg><span>Dishwasher</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-oven"></use></svg><span>Oven</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-coffee"></use></svg><span>Coffee maker</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-toaster"></use></svg><span>Toaster</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-blender"></use></svg><span>Blender</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-table"></use></svg><span>Dining table</span></li>
             </ul>
           </div>
 
           <div class="card">
             <h3>Location features</h3>
-            <ul class="list"><li>Private entrance</li><li>Separate street/building entrance</li></ul>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-door"></use></svg><span>Private entrance</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-door"></use></svg><span>Separate street/building entrance</span></li>
+            </ul>
           </div>
 
           <div class="card">
             <h3>Outdoor</h3>
-            <ul class="list"><li>Patio / balcony</li><li>Fire pit</li><li>Gas BBQ grill</li></ul>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-patio"></use></svg><span>Patio / balcony</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-firepit"></use></svg><span>Fire pit</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-bbq"></use></svg><span>Gas BBQ grill</span></li>
+            </ul>
           </div>
 
           <div class="card">
-            <h3>Parking & facilities</h3>
-            <ul class="list"><li>Free parking on premises</li></ul>
+            <h3>Parking &amp; facilities</h3>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-parking"></use></svg><span>Free parking on premises</span></li>
+            </ul>
           </div>
 
           <div class="card">
             <h3>Services</h3>
-            <ul class="list"><li>Self check-in</li><li>Keypad (door code)</li></ul>
+            <ul class="list amenities">
+              <li><svg class="i" aria-hidden="true"><use href="#i-door"></use></svg><span>Self check-in</span></li>
+              <li><svg class="i" aria-hidden="true"><use href="#i-keypad"></use></svg><span>Keypad (door code)</span></li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- HOUSE RULES -->
+    <section class="section alt">
+      <div class="container">
+        <h2>House rules</h2>
+        <ul class="list">
+          <li>No smoking indoors</li>
+          <li>No parties or events</li>
+          <li>Quiet hours after 10 PM</li>
+          <li>Stairs required to access the home</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- INQUIRY -->
     <section id="inquiry" class="section alt">
       <div class="container">
         <h2>Inquiry</h2>
 
         <form id="inquiryForm" class="form">
           <div class="row">
-            <label>Name <input name="name" type="text" required maxlength="80" /></label>
-            <label>Email <input name="email" type="email" required maxlength="120" /></label>
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required maxlength="80" placeholder="Your name" />
+            </div>
+        
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required maxlength="120" placeholder="you@email.com" />
+            </div>
           </div>
-
+        
           <div class="row">
-            <label>Check-in (optional) <input name="check_in" type="date" /></label>
-            <label>Check-out (optional) <input name="check_out" type="date" /></label>
+            <div class="field">
+              <label for="check_in">Check-in <span class="muted small">(optional)</span></label>
+              <input id="check_in" name="check_in" type="date" />
+            </div>
+        
+            <div class="field">
+              <label for="check_out">Check-out <span class="muted small">(optional)</span></label>
+              <input id="check_out" name="check_out" type="date" />
+            </div>
           </div>
-
-          <label>Message <textarea name="message" rows="5" required maxlength="2000"></textarea></label>
-
-          <button class="btn btn-primary" type="submit">Send inquiry</button>
-          <p id="formStatus" class="status" aria-live="polite"></p>
+        
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required maxlength="2000" placeholder="Questions, dates, anything you want to ask…"></textarea>
+          </div>
+        
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send inquiry</button>
+            <p id="formStatus" class="status" aria-live="polite"></p>
+          </div>
         </form>
       </div>
     </section>
@@ -206,9 +584,22 @@
     </div>
   </footer>
 
-  <div id="lightbox" class="lightbox" aria-hidden="true">
+  <!-- MOBILE STICKY CTA -->
+  <div class="mobile-cta">
+    <a class="btn btn-primary" href="https://www.airbnb.com/rooms/53188308?viralityEntryPoint=1&s=76" target="_blank" rel="noopener">
+      Check availability
+    </a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous image">‹</button>
     <img id="lightboxImg" alt="Expanded photo" />
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next image">›</button>
+  
+    <div class="lightbox-caption" id="lightboxCaption" aria-live="polite"></div>
   </div>
 
   <script src="app.js"></script>

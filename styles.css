@@ -1,14 +1,48 @@
 :root {
-  --bg: #0f1a14;          /* deep forest green */
-  --card: #16261d;        /* pine shadow */
-  --text: #eef4ee;        /* soft off-white */
-  --muted: #b7c6bc;       /* sage gray */
-  --line: rgba(255,255,255,.12);
+  /* Core palette – light cabin / daylight */
+  --bg: #f6f5f2;          /* warm off-white */
+  --bg-alt: #efece6;      /* soft linen */
+  --card: #ffffff;       /* clean white cards */
 
-  --accent: #9bbf9a;      /* moss green */
-  --accent-strong: #6fa36f;
+  --text: #1f2933;       /* charcoal */
+  --muted: #6b7280;      /* cool gray */
 
-  --shadow: 0 12px 30px rgba(0,0,0,.45);
+  --line: rgba(0,0,0,.08);
+
+  /* Accent – pulled from red door / cozy cabin */
+  --accent: #c24b3c;     
+  --accent-strong: #a63d30;
+
+  --shadow: 0 10px 28px rgba(0,0,0,.12);
+}
+
+/* ===== Theme presets (override variables) ===== */
+body.theme-cabin{
+  --bg: #121a14;
+  --bg-alt: #182318;
+  --card: #1a2a20;
+
+  --text: #f2f0ea;
+  --muted: #c8c2b6;
+
+  --line: rgba(255,255,255,.10);
+
+  --accent: #b7c38a;          /* mossy / warm */
+  --accent-strong: #8ea35d;   /* olive */
+}
+
+body.theme-fog{
+  --bg: #0f1715;
+  --bg-alt: #121f1c;
+  --card: #162622;
+
+  --text: #edf2f1;
+  --muted: #b9c7c3;
+
+  --line: rgba(255,255,255,.10);
+
+  --accent: #8fb9b2;          /* misty teal */
+  --accent-strong: #6ea19a;
 }
 
 * { box-sizing: border-box; }
@@ -26,10 +60,12 @@ body {
   margin: 0 auto;
 }
 
+/* ================= NAV ================= */
+
 .nav {
   position: sticky;
   top: 0;
-  background: rgba(15,26,20,.85);
+  background: rgba(246,245,242,.86); /* matches --bg */
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   z-index: 50;
@@ -46,11 +82,29 @@ body {
   color: var(--muted);
   text-decoration: none;
   margin-right: 14px;
+  position: relative;
 }
 
 .links a:hover {
   color: var(--text);
 }
+
+.links a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0%;
+  height:2px;
+  background: rgba(0,0,0,.12);
+  transition: width 180ms ease;
+}
+
+.links a:hover::after{
+  width: 100%;
+}
+
+/* ================= BUTTONS ================= */
 
 .btn {
   padding: 10px 14px;
@@ -59,46 +113,94 @@ body {
   background: transparent;
   color: var(--text);
   cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+}
+
+.btn:active{
+  transform: translateY(0px);
 }
 
 .btn-primary {
-  background: rgba(155,191,154,.25);
-  border-color: rgba(155,191,154,.5);
-  color: #0f1a14;
+  background: linear-gradient(
+    180deg,
+    #c24b3c,
+    #a63d30
+  );
+  border: none;
+  color: #fff;
   font-weight: 600;
 }
 
 .btn-primary:hover {
-  background: rgba(155,191,154,.4);
+  filter: brightness(1.08);
 }
+.btn-primary:active {
+  transform: translateY(1px);
+}
+.btn-ghost:hover {
+  background: rgba(194,75,60,.10); /* derived from --accent */
+  border-color: rgba(194,75,60,.20);
+}
+/* Hero-specific button styling */
+.hero-actions .btn-ghost {
+  color: #ffffff;
+  border-color: rgba(255,255,255,.35);
+  background: rgba(0,0,0,.25);
+  backdrop-filter: blur(4px);
+}
+
+.hero-actions .btn-ghost:hover {
+  background: rgba(0,0,0,.45);
+  border-color: rgba(255,255,255,.55);
+}
+
+/* ================= SECTIONS ================= */
 
 .section {
   padding: 54px 0;
 }
 
 .section.alt {
-  background: rgba(255,255,255,.03);
+  background: var(--bg-alt);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
+/* remove divider line directly after hero */
+.hero + .section {
+  border-top: none !important;
+}
+
+/* ================= CARDS ================= */
+
 .card {
-  background: linear-gradient(
-    180deg,
-    rgba(22,38,29,.95),
-    rgba(18,30,23,.95)
-  );
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 16px;
   box-shadow: var(--shadow);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
+
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.16);
+  border-color: rgba(0,0,0,.12);
+}
+
+/* ================= HERO ================= */
 
 .hero {
   position: relative;
-  min-height: 70vh;
+  min-height: 78vh;
   display: flex;
   align-items: flex-end;
+  overflow: hidden;
+  margin-bottom: -1px;
 }
 
 .hero-img {
@@ -107,23 +209,87 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+
+  transform: scale(1.03);
+  will-change: transform, opacity;
+  transition: opacity 500ms ease;
+
+  opacity: 0.85;
+
+  /* brighten + warm slightly */
+  filter: brightness(1.08) contrast(1.03) saturate(1.05);
 }
+
+.hero-img.is-loaded { opacity: 1; }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
+  pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(15,26,20,.95),
-    rgba(15,26,20,.45)
+    rgba(0,0,0,.45),
+    rgba(0,0,0,.15)
   );
-  pointer-events: none;
 }
 
 .hero-content {
   position: relative;
   padding: 40px 0;
 }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.hero-actions .btn { white-space: nowrap; }
+
+@media (max-width: 520px) {
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Hero text should always be white over image */
+.hero-content h1,
+.hero-content p,
+.hero-content .pill {
+  color: #ffffff;
+}
+
+/* Pills on hero */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.pill {
+  background: rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1;
+  backdrop-filter: blur(4px);
+}
+
+/* Optional: slightly brighter headline */
+.hero-content h1 {
+  text-shadow: 0 6px 24px rgba(0,0,0,.45);
+}
+
+/* Optional: softer paragraph contrast */
+.hero-content p {
+  color: rgba(255,255,255,.92);
+}
+
+/* ================= GALLERY ================= */
 
 .gallery {
   display: grid;
@@ -136,9 +302,521 @@ body {
   height: 160px;
   object-fit: cover;
   border-radius: 14px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
+
+.thumb img:hover{
+  transform: scale(1.02);
+  box-shadow: 0 14px 34px rgba(0,0,0,.45);
+}
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox{
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0,0,0,.72);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  z-index: 999;
+}
+
+.lightbox.show,
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img{
+  max-width: min(1100px, 94vw);
+  max-height: 86vh;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.55);
+  transform: translateY(6px);
+  transition: transform 180ms ease;
+}
+
+
+.lightbox.show img,
+.lightbox.open img {
+  transform: translateY(0px);
+}
+.lightbox-close{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(15,26,20,.65);
+  color: var(--text);
+  cursor: pointer;
+}
+/* Light theme close button on dark overlay */
+.lightbox-close{
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  border-color: rgba(255,255,255,.28);
+}
+
+.lightbox-close:hover{
+  background: rgba(255,255,255,.22);
+}
+
+body.modal-open{
+  overflow: hidden;
+}
+
+/* ================= FOOTER ================= */
 
 .footer {
   border-top: 1px solid var(--line);
   padding: 20px 0;
+}
+.gallery {
+  margin-top: 18px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.brand-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+}
+/* ================= SVG ICONS ================= */
+
+.i {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--accent);
+  display: inline-block;
+}
+
+/* Amenity list rows with icons */
+.list.amenities {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 0;
+}
+
+.list.amenities li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 6px 0;
+}
+
+.list.amenities li span {
+  flex: 1;
+}
+/* ===== Amenities fixes ===== */
+
+/* make the amenities grid actually be 3 columns (and responsive) */
+.grid.three {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 980px) {
+  .grid.three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .grid.three { grid-template-columns: 1fr; }
+}
+
+/* kill default UL bullets/margins (this is the big “messed up” culprit) */
+.list {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0 0;
+}
+
+/* amenities rows */
+.list.amenities li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 7px 0;
+}
+
+/* icon sizing + alignment */
+.list.amenities .i {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  color: var(--accent);
+  margin-top: 2px; /* nudges icon down to align with text */
+}
+
+/* keep long lines from looking weird */
+.list.amenities li span {
+  flex: 1;
+  min-width: 0;
+}
+
+/* card spacing for amenities so it looks like a clean list block */
+#amenities .card h3 {
+  margin: 0 0 8px;
+} 
+/* Gallery group labels */
+
+.gallery-group {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-weight: 700;
+  letter-spacing: .2px;
+  color: var(--text);
+}
+
+.gallery-group:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+/* ================= GALLERY POLISH ================= */
+
+/* Better group headers (use <h3 class="gallery-group">…</h3> if possible) */
+.gallery-group{
+  grid-column: 1 / -1;
+  margin: 18px 0 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-weight: 750;
+  letter-spacing: .2px;
+  color: var(--text);
+}
+
+.gallery-group:first-child{
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+/* If your group title is a <div>, this keeps spacing consistent */
+.gallery-group + .thumb{
+  margin-top: 2px;
+}
+
+/* Reset <button> styling so thumbs behave consistently */
+.thumb{
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: inherit;
+  border-radius: 16px;
+  overflow: hidden; /* clips img corners */
+  position: relative;
+  outline: none;
+}
+
+/* Visible keyboard focus (tabbing) */
+.thumb:focus-visible{
+  box-shadow: 0 0 0 3px rgba(194,75,60,.35);
+}
+
+/* Image sizing + hover */
+.thumb img{
+  width: 100%;
+  height: 170px;            /* slightly taller than 160 */
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;       /* matches .thumb overflow */
+  transition: transform 180ms ease, filter 180ms ease;
+  will-change: transform;
+}
+
+.thumb:hover img{
+  transform: scale(1.03);
+  filter: brightness(1.03);
+}
+
+/* Subtle “tap” feedback */
+.thumb:active img{
+  transform: scale(1.01);
+}
+
+/* Make the grid breathe a bit more */
+.gallery{
+  margin-top: 18px;
+  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+@media (max-width: 520px){
+  .gallery{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .thumb img{ height: 140px; }
+}
+
+/* ================= LIGHTBOX POLISH ================= */
+
+.lightbox{
+  backdrop-filter: blur(2px);
+}
+
+.lightbox img{
+  background: rgba(255,255,255,.06);
+}
+
+/* Close button a bit more “button-y” */
+.lightbox-close{
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.lightbox-close:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.28);
+}
+
+/* Optional: show a subtle hint on desktop */
+@media (hover: hover){
+  .lightbox.show::after,
+  .lightbox.open::after{
+    content: "← / → to navigate • Esc to close";
+    position: fixed;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,.75);
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,.25);
+    border: 1px solid rgba(255,255,255,.14);
+    pointer-events: none;
+  }
+}
+/* Lightbox prev/next buttons */
+.lightbox-nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.22);
+  background: rgba(0,0,0,.28);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lightbox-nav:hover{
+  background: rgba(0,0,0,.40);
+}
+
+.lightbox-nav:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.22);
+}
+
+.lightbox-nav.prev{ left: 18px; }
+.lightbox-nav.next{ right: 18px; }
+
+@media (max-width: 600px){
+  .lightbox-nav{
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+  }
+  .lightbox-nav.prev{ left: 10px; }
+  .lightbox-nav.next{ right: 10px; }
+}
+/* ================= INQUIRY FORM ================= */
+
+.form {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.form .row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 700px) {
+  .form .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.small {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+input, textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.75);
+  color: var(--text);
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+textarea { resize: vertical; }
+
+input:focus, textarea:focus {
+  border-color: rgba(194,75,60,.45);
+  box-shadow: 0 0 0 4px rgba(194,75,60,.12);
+  background: #fff;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status {
+  margin: 0;
+  color: var(--muted);
+}
+/* ================= QUICK INFO ================= */
+
+.quick-info {
+  margin-top: 36px;        /* space from hero */
+  padding: 18px 0 6px;     /* vertical breathing room */
+}
+
+.quick-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px 22px;
+  align-items: center;
+}
+
+/* individual stat */
+.qi {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 14px;
+  border-radius: 14px;
+
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+
+  font-size: 14px;
+}
+
+/* icon */
+.qi {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 6px 0;
+}
+
+/* text */
+.qi strong {
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+/* ===== Quick info reveal animation ===== */
+.qi {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 420ms ease, transform 420ms ease;
+  will-change: opacity, transform;
+}
+
+.qi.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* nice little stagger using a CSS variable */
+.qi {
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .qi {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+/* ================= MOBILE STICKY CTA ================= */
+
+.mobile-cta {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 80;
+
+  /* iOS safe area support */
+  padding-bottom: env(safe-area-inset-bottom);
+
+  /* subtle entrance */
+  animation: mobileCtaIn 280ms ease-out both;
+}
+
+/* Hide on tablet + desktop */
+@media (min-width: 768px) {
+  .mobile-cta {
+    display: none;
+  }
+}
+
+/* Make the button feel tappable */
+.mobile-cta .btn {
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 15px;
+}
+
+/* Small entrance animation */
+@keyframes mobileCtaIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
